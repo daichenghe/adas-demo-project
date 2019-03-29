@@ -22,12 +22,12 @@
 
 #define GL_GLEXT_PROTOTYPES 1
 
-#define TIRE_COUNT  					(4)	/* ³µÂÖ¸öÊý */
-#define AVM_FLY_COUNTERCLOCKWISE		(0)	/* ÄæÊ±Õë */
-#define AVM_FLY_CLOCKWISE				(1)	/* Ë³Ê±Õë */
-#define AVM_FLY_CLOCK_THRESHOLD			(4)	/* Ë³/ÄæÊ±ÕëãÐÖµ */
-#define AVM_FLY_MODE_POINT_CNT			(8)	/* Ðý×ªÂ·¾¶ÉÏÓÐ¶àÉÙ¸öµã */
-#define AVM_3D_FLY_STEP_COUNT			(10)/* Á½¸öÄ£Ê½Ö®¼äÌø¹ýÈ¥ÐèÒªµÄ²½Êý */
+#define TIRE_COUNT  					(4)	/* è½¦è½®ä¸ªæ•° */
+#define AVM_FLY_COUNTERCLOCKWISE		(0)	/* é€†æ—¶é’ˆ */
+#define AVM_FLY_CLOCKWISE				(1)	/* é¡ºæ—¶é’ˆ */
+#define AVM_FLY_CLOCK_THRESHOLD			(4)	/* é¡º/é€†æ—¶é’ˆé˜ˆå€¼ */
+#define AVM_FLY_MODE_POINT_CNT			(8)	/* æ—‹è½¬è·¯å¾„ä¸Šæœ‰å¤šå°‘ä¸ªç‚¹ */
+#define AVM_3D_FLY_STEP_COUNT			(10)/* ä¸¤ä¸ªæ¨¡å¼ä¹‹é—´è·³è¿‡åŽ»éœ€è¦çš„æ­¥æ•° */
 #define AVM_3D_VIEW_PARAM_UPDATE_ON		(1)
 #define AVM_3D_VIEW_PARAM_UPDATE_OFF	(2)
 
@@ -550,18 +550,18 @@ static AVM_ERR avm_3d_calc_current_view_parameter(view_keep_t *view_keep,view_3d
 	{
 
 		view_keep->fly_flag = AVM_FLY_ON_COMPLETE;
-		/* µÚÒ»´Î½øÈë3DÄ£Ê½£¬²»ÐèÒª·ÉÏè */
+		/* ç¬¬ä¸€æ¬¡è¿›å…¥3Dæ¨¡å¼ï¼Œä¸éœ€è¦é£žç¿” */
 		memcpy(view_gl_parameter_output,&view_gl_parameter_3d[view_keep->sub_mode],sizeof(view_3d_parameter_t));
 	}
 	
 	if(view_keep->fly_flag == AVM_FLY_ON)
 	{
-		/* 3D Ä£Ê½Ö®¼äÐèÒª·ÉÏè */
+		/* 3D æ¨¡å¼ä¹‹é—´éœ€è¦é£žç¿” */
 		view_keep->fly_flag = AVM_FLY_ON_GOING;
 		fly_step_cnt = 0;
 		memcpy(&view_gl_parameter_last,&view_gl_parameter_3d[view_keep->sub_mode_last],sizeof(view_3d_parameter_t));
 		
-		/* ÅÐ¶ÏË³Ê±Õë»¹ÊÇÄæÊ±ÕëÐý×ª */
+		/* åˆ¤æ–­é¡ºæ—¶é’ˆè¿˜æ˜¯é€†æ—¶é’ˆæ—‹è½¬ */
 		if(view_keep->sub_mode > view_keep->sub_mode_last)
 		{
 			if(view_keep->sub_mode - view_keep->sub_mode_last > AVM_FLY_CLOCK_THRESHOLD)
@@ -1157,7 +1157,7 @@ static AVM_ERR view_gl_parameter_init(MODE3D mode)
 			view_gl_parameter_3d[MODE_3D_RIGHTUP].eye.y          = EYE_Y_3D;
 			view_gl_parameter_3d[MODE_3D_RIGHTUP].eye.z          = EYE_Z_3D;
 			view_gl_parameter_3d[MODE_3D_RIGHTUP].pitchhead.x = 30;
-		    view_gl_parameter_3d[MODE_3D_RIGHTUP].pitchhead.y = 45;
+		        view_gl_parameter_3d[MODE_3D_RIGHTUP].pitchhead.y = 45;
 			view_gl_parameter_3d[MODE_3D_RIGHTUP].pitchhead.z = 8000;
 			view_gl_parameter_3d[MODE_3D_RIGHTUP].at.x          	= 0.0000;
 			view_gl_parameter_3d[MODE_3D_RIGHTUP].at.y          	= 0.0000;
