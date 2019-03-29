@@ -1,11 +1,11 @@
 # adas_demo_project
 a demo project you can get more acquainted with adas (some sensitive function body was hidden)
 # **软件环境**
-###     linux c多线程编程
+###     linux         c多线程编程
 ###     source insight作为编辑器
 ###     gcc工具链编译
 对应文件为 Makefile
-###     图形库opengl
+###     opengl图形库
 
 # **file structure 文件结构**
 ### avm_app 系统应用程序，隐去敏感代码及敏感函数的函数体
@@ -36,11 +36,11 @@ a demo project you can get more acquainted with adas (some sensitive function bo
     MODE_AVM_BSD  	    2D环视 
 
 # **功能**
-### AVM 全景监控影像系统
-### bsd 盲区检测
-### ldws 车道偏离报系统
-### dvr 录制播放
-### 行车轨迹线 wheel path
+### AVM   全景监控影像系统 Around View Monitor
+### bsd   盲区检测         Blind Spot Detection   
+### ldws  车道偏离报系统   Lane Departure Warning System
+### dvr   录制播放
+### wheel path 行车轨迹线
 
 # **方案实现**
 ### demo基于opengl语言显示界面，使用摄像头标定结果通过坐标系、投影、矩阵变化处理相机数据并显示。
