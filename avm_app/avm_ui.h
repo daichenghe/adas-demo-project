@@ -58,7 +58,6 @@
 #define UI_3DLB  "media/3dlb.png"
 #define UI_3DRB  "media/3drb.png"
 
-
 #define UI_AUTOCC   "media/autocc.png"
 #define UI_AUTOCCS   "media/autoco.png"
 #define UI_AUTOCCE   "media/autoce.png"
