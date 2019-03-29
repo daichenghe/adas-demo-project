@@ -2,7 +2,7 @@
 * File Name          : avmlib_2d.h
 * Author             : Jerry
 * Revision           : 2.1
-* Date               : 15/07/2016
+* Date               : 15/07/2017
 * Description        : Library Interface 
 *******************************************************************************/
 
@@ -18,7 +18,7 @@
 #include "avmlib_vectors.h"
 #include "avmlib_GenCaliData.h"
 
-//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
+//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
 #define MAX2DOBJECT       4
 #define MAX2DTEXTURE      4
 #define MAX2DUINFORM      8
@@ -32,22 +32,22 @@
 *************************************************************************
 *************************************************************************
 */
-enum avm2d_type_enum/* avm 2d ÀàĞÍ */
+enum avm2d_type_enum/* avm 2d ç±»å‹ */
 {
-    invalid2d_type = 0,//ÎŞĞ§
-    avm2dview_type,    //»·ÊÓ
+    invalid2d_type = 0,//æ— æ•ˆ
+    avm2dview_type,    //ç¯è§†
     avmldwview_type,   //ldw
-    singleview_type,   //µ¥ÊÓÍ¼
+    singleview_type,   //å•è§†å›¾
     periscopeview_type,
-    car2d_type         //³µÄ£
+    car2d_type         //è½¦æ¨¡
 };
 
-enum blend2d_type_enum/*blending ÀàĞÍ */
+enum blend2d_type_enum/*blending ç±»å‹ */
 {
-    SRC_DST_ALPHA_2D = 1,//Ô´ÑÕÉ«µÄalphaÖµÀ´×÷ÎªÒò×Ó£¬Ä¿±êÑÕÉ«µÄalphaÖµÀ´×÷ÎªÒò×Ó
-    SRC_ONE_MINUS_SRC_ALPHA_2D,//Ô´ÑÕÉ«µÄalphaÖµÀ´×÷ÎªÒò×Ó£¬1.0¼õÈ¥Ô´ÑÕÉ«µÄalphaÖµÀ´×÷ÎªÄ¿±êÑÕÉ«Òò×Ó
-    ONE_ZERO_ALPHA_2D,//Ê¹ÓÃ1.0×÷ÎªÔ´ÑÕÉ«µÄÒò×Ó£¬0.0×÷ÎªÄ¿±êÑÕÉ«µÄÒò×Ó£¬
-    //Ïàµ±ÓÚÍêÈ«µÄÊ¹ÓÃÁËÔ´ÑÕÉ«²ÎÓë»ìºÏ¶ø²»Ê¹ÓÃÄ¿±êÑÕÉ«
+    SRC_DST_ALPHA_2D = 1,//æºé¢œè‰²çš„alphaå€¼æ¥ä½œä¸ºå› å­ï¼Œç›®æ ‡é¢œè‰²çš„alphaå€¼æ¥ä½œä¸ºå› å­
+    SRC_ONE_MINUS_SRC_ALPHA_2D,//æºé¢œè‰²çš„alphaå€¼æ¥ä½œä¸ºå› å­ï¼Œ1.0å‡å»æºé¢œè‰²çš„alphaå€¼æ¥ä½œä¸ºç›®æ ‡é¢œè‰²å› å­
+    ONE_ZERO_ALPHA_2D,//ä½¿ç”¨1.0ä½œä¸ºæºé¢œè‰²çš„å› å­ï¼Œ0.0ä½œä¸ºç›®æ ‡é¢œè‰²çš„å› å­ï¼Œ
+    //ç›¸å½“äºå®Œå…¨çš„ä½¿ç”¨äº†æºé¢œè‰²å‚ä¸æ··åˆè€Œä¸ä½¿ç”¨ç›®æ ‡é¢œè‰²
 };
 
 /*
@@ -59,30 +59,30 @@ enum blend2d_type_enum/*blending ÀàĞÍ */
 */
 struct avm2d_type_;
 
-typedef struct view_2d_parameter_//2dÊÓµã²ÎÊı
+typedef struct view_2d_parameter_//2dè§†ç‚¹å‚æ•°
 {
-    Vector3 scale;   //Ëõ·ÅÒò×Ó(X,Y,Z;ZÎŞĞ§£¬¹Ì¶¨Îª1.0)
-    Vector3 eye;     //ÊÓµãÎ»ÖÃ(X,Y,Z)
-    Vector3 at;      //ÊÓµãÖÕµãÎ»ÖÃ(X,Y,Z)
-    Vector3 up;      //ÏòÉÏ·½ÏòÏîÁ¿
-    GLfloat offset_x;//XÆ½ÒÆ
-    GLfloat offset_y;//YÆ½ÒÆ
-    GLfloat offset_z;//ZÆ½ÒÆÎŞĞ§,¹Ì¶¨Îª0.0
-    GLfloat rotate_x;//ÈÆXÖáĞı×ª
-    GLfloat rotate_y;//ÈÆYÖáĞı×ª
-    GLfloat rotate_z;//ÈÆZÖáĞı×ª
-    GLfloat left;    //ÊÓ¾°Ìåleft
-    GLfloat right;   //ÊÓ¾°Ìåright
-    GLfloat top;     //ÊÓ¾°Ìåtop
-    GLfloat bottom;  //ÊÓ¾°Ìåbottom
-    S32 screen_x;    //ÊÓ¿ÚÎ»ÖÃx
-    S32 screen_y;    //ÊÓ¿ÚÎ»ÖÃy
-    S32 screen_width;//ÊÓ¿Ú¿í¶È
-    S32 screen_height;//ÊÓ¿Ú¸ß¶È
-    U32 reserved;     //±£Áô
+    Vector3 scale;   //ç¼©æ”¾å› å­(X,Y,Z;Zæ— æ•ˆï¼Œå›ºå®šä¸º1.0)
+    Vector3 eye;     //è§†ç‚¹ä½ç½®(X,Y,Z)
+    Vector3 at;      //è§†ç‚¹ç»ˆç‚¹ä½ç½®(X,Y,Z)
+    Vector3 up;      //å‘ä¸Šæ–¹å‘é¡¹é‡
+    GLfloat offset_x;//Xå¹³ç§»
+    GLfloat offset_y;//Yå¹³ç§»
+    GLfloat offset_z;//Zå¹³ç§»æ— æ•ˆ,å›ºå®šä¸º0.0
+    GLfloat rotate_x;//ç»•Xè½´æ—‹è½¬
+    GLfloat rotate_y;//ç»•Yè½´æ—‹è½¬
+    GLfloat rotate_z;//ç»•Zè½´æ—‹è½¬
+    GLfloat left;    //è§†æ™¯ä½“left
+    GLfloat right;   //è§†æ™¯ä½“right
+    GLfloat top;     //è§†æ™¯ä½“top
+    GLfloat bottom;  //è§†æ™¯ä½“bottom
+    S32 screen_x;    //è§†å£ä½ç½®x
+    S32 screen_y;    //è§†å£ä½ç½®y
+    S32 screen_width;//è§†å£å®½åº¦
+    S32 screen_height;//è§†å£é«˜åº¦
+    U32 reserved;     //ä¿ç•™
 } view_2d_parameter_t;
 
-typedef struct shader2d_member_//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
+typedef struct shader2d_member_//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
 {
     C8 name[MAX2DNAME];
     GLuint memberID;
@@ -90,17 +90,17 @@ typedef struct shader2d_member_//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
 
 typedef struct avm2d_shader_type_
 {
-    GLuint shaderProgram;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    GLuint uiniformListNum;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    GLuint attributeListNum;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    shader2d_member_t uniformList [MAX2DUINFORM];//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    shader2d_member_t attributeList [MAX2DATTRIBUTE];//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    AVM_ERR(*avmlib_Use)(struct avm2d_type_ *avm2d_type);//¼¤»îÏîÄ¿¶ÔÏó
-    AVM_ERR(*avmlib_Unuse)(struct avm2d_type_ *avm2d_type);//È¥¼¤»îÏîÄ¿¶ÔÏó
-    AVM_ERR(*avmlib_Shader_Init)(struct avm2d_type_ *avm2d_type, const C8 *programName, const C8 *programName1);//×ÅÉ«Æ÷³õÊ¼»¯
-    AVM_ERR(*avmlib_Delete_Shader)(struct avm2d_type_ *avm2d_type);//×ÅÉ«Æ÷ÍË³ö
+    GLuint shaderProgram;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    GLuint uiniformListNum;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    GLuint attributeListNum;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    shader2d_member_t uniformList [MAX2DUINFORM];//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    shader2d_member_t attributeList [MAX2DATTRIBUTE];//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    AVM_ERR(*avmlib_Use)(struct avm2d_type_ *avm2d_type);//æ¿€æ´»é¡¹ç›®å¯¹è±¡
+    AVM_ERR(*avmlib_Unuse)(struct avm2d_type_ *avm2d_type);//å»æ¿€æ´»é¡¹ç›®å¯¹è±¡
+    AVM_ERR(*avmlib_Shader_Init)(struct avm2d_type_ *avm2d_type, const C8 *programName, const C8 *programName1);//ç€è‰²å™¨åˆå§‹åŒ–
+    AVM_ERR(*avmlib_Delete_Shader)(struct avm2d_type_ *avm2d_type);//ç€è‰²å™¨é€€å‡º
 } avm2d_shader_type_t;
-typedef struct objID_2d_//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
+typedef struct objID_2d_//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
 {
     GLuint ObjID;
     GLuint objIDPointNum;
@@ -108,23 +108,23 @@ typedef struct objID_2d_//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
 
 typedef struct avm2d_object_type_
 {
-    objID_2d_t objID[MAX2DOBJECT];//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    S32    objprivate[20];//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    U8     usedObjNum;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    AVM_ERR(*avmlib_Gen_ObjBuffer)(struct avm2d_type_ *avm2d_type, const C8 *file_name, U8 num,lut_parameter_t* plutpar);//¶¨Òå¶¥µã»º´æ
-    AVM_ERR(*avmlib_Delete_Object)(struct avm2d_type_ *avm2d_type);//É¾³ı¶¥µã»º´æ
+    objID_2d_t objID[MAX2DOBJECT];//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    S32    objprivate[20];//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    U8     usedObjNum;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    AVM_ERR(*avmlib_Gen_ObjBuffer)(struct avm2d_type_ *avm2d_type, const C8 *file_name, U8 num,lut_parameter_t* plutpar);//å®šä¹‰é¡¶ç‚¹ç¼“å­˜
+    AVM_ERR(*avmlib_Delete_Object)(struct avm2d_type_ *avm2d_type);//åˆ é™¤é¡¶ç‚¹ç¼“å­˜
 } avm2d_object_type_t;
 
 typedef struct avm2d_texture_type_
 {
-    GLuint TextureID[2];//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-	GLuint TextureID_used;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    GLuint TextureW;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    GLuint TextureH;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    GLfloat sTextureCorrectParameter[3];//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    AVM_ERR(*avmlib_Gen_TextrueBuffer)(struct avm2d_type_ *avm2d_type, GLuint texture_width, GLuint texture_heigh, GLenum format, void *pdata);//¶¨ÒåÎÆÀí
+    GLuint TextureID[2];//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+	GLuint TextureID_used;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    GLuint TextureW;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    GLuint TextureH;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    GLfloat sTextureCorrectParameter[3];//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    AVM_ERR(*avmlib_Gen_TextrueBuffer)(struct avm2d_type_ *avm2d_type, GLuint texture_width, GLuint texture_heigh, GLenum format, void *pdata);//å®šä¹‰çº¹ç†
     AVM_ERR(*avmlib_Update_TextureBuffer)(struct avm2d_type_ *avm2d_type, GLint xoffset, GLint yoffset, GLuint texture_width, GLuint texture_heigh, GLenum format, void *pdata);
-    AVM_ERR(*avmlib_Delete_Texture)(struct avm2d_type_ *avm2d_type);//É¾³ıÎÆÀí
+    AVM_ERR(*avmlib_Delete_Texture)(struct avm2d_type_ *avm2d_type);//åˆ é™¤çº¹ç†
 } avm2d_texture_type_t;
 
 
@@ -135,7 +135,7 @@ typedef struct blend2dParameter_
     GLfloat   rgb_correct[3];//[0]r [1]g [2]b
 } blend_2d_Parameter_t;
 
-typedef struct avm2dviewParameter_//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
+typedef struct avm2dviewParameter_//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
 {
     GLfloat matMVP[16];
     U32 screen_x;
@@ -147,24 +147,24 @@ typedef struct avm2dviewParameter_//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
 
 typedef struct avm2d_render_type_
 {
-    blend_2d_Parameter_t blendParameter;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    avm2d_view_Parameter_t viewParameter[MAX2DOBJECT];//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    AVM_ERR(*avmlib_Set_Blend)(struct avm2d_type_ *avm2d_type,blend_2d_Parameter_t *parameter);//BlendingÉèÖÃ
-    AVM_ERR(*avmlib_Set_ViewParameter)(struct avm2d_type_ *avm2d_type, view_2d_parameter_t *viewParameter, U8 Index);//ÊÓµã²ÎÊıÉèÖÃ
-    AVM_ERR(*avmlib_Render_Singleview)(struct avm2d_type_ *avm2d_type, U8 obj_Index, U8 c_Index);//µ¥ÊÓÍ¼ÏÔÊ¾
-    AVM_ERR(*avmlib_Render_Topview)(struct avm2d_type_ *avm2d_type);//»·ÊÓÏÔÊ¾
-    AVM_ERR(*avmlib_Render_Car)(struct avm2d_type_ *avm2d_type);//³µÄ£ÏÔÊ¾
+    blend_2d_Parameter_t blendParameter;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    avm2d_view_Parameter_t viewParameter[MAX2DOBJECT];//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    AVM_ERR(*avmlib_Set_Blend)(struct avm2d_type_ *avm2d_type,blend_2d_Parameter_t *parameter);//Blendingè®¾ç½®
+    AVM_ERR(*avmlib_Set_ViewParameter)(struct avm2d_type_ *avm2d_type, view_2d_parameter_t *viewParameter, U8 Index);//è§†ç‚¹å‚æ•°è®¾ç½®
+    AVM_ERR(*avmlib_Render_Singleview)(struct avm2d_type_ *avm2d_type, U8 obj_Index, U8 c_Index);//å•è§†å›¾æ˜¾ç¤º
+    AVM_ERR(*avmlib_Render_Topview)(struct avm2d_type_ *avm2d_type);//ç¯è§†æ˜¾ç¤º
+    AVM_ERR(*avmlib_Render_Car)(struct avm2d_type_ *avm2d_type);//è½¦æ¨¡æ˜¾ç¤º
 } avm2d_render_type_t;
 
 typedef struct avm2d_type_
 {
-    U8  IsUsed;//libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    enum avm2d_type_enum  avm_type; //2D ÀàĞÍ
-    avm2d_shader_type_t  *avm2d_shader_type; //shader¶ÔÏó libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    avm2d_object_type_t  *avm2d_object_type; //vbo¶ÔÏó  libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    avm2d_texture_type_t *avm2d_texture_type;//ÎÆÀí¶ÔÏó libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    avm2d_render_type_t  *avm2d_render_type; //äÖÈ¾¶ÔÏó libÊ¹ÓÃ£¬²»¿ÉĞŞ¸Ä
-    struct avm2d_type_ *pAttr;//³µÄ£ËùÊôµÄ»·ÊÓ£¬ÆäËûµ¥ÊÓÒ°ÎŞĞ§
+    U8  IsUsed;//libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    enum avm2d_type_enum  avm_type; //2D ç±»å‹
+    avm2d_shader_type_t  *avm2d_shader_type; //shaderå¯¹è±¡ libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    avm2d_object_type_t  *avm2d_object_type; //vboå¯¹è±¡  libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    avm2d_texture_type_t *avm2d_texture_type;//çº¹ç†å¯¹è±¡ libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    avm2d_render_type_t  *avm2d_render_type; //æ¸²æŸ“å¯¹è±¡ libä½¿ç”¨ï¼Œä¸å¯ä¿®æ”¹
+    struct avm2d_type_ *pAttr;//è½¦æ¨¡æ‰€å±çš„ç¯è§†ï¼Œå…¶ä»–å•è§†é‡æ— æ•ˆ
 }  avm2d_type_t;
 
 /*
@@ -178,49 +178,49 @@ typedef struct avm2d_type_
 /*******************************************************************************************
 * Function Name  : avmlib_2d_Init.
 *
-* Description    : avm 2D³õÊ¼»¯
+* Description    : avm 2Dåˆå§‹åŒ–
 *
-* Arguments      : avm2d_type  avm2d_type_tÀàĞÍÖ¸Õë
+* Arguments      : avm2d_type  avm2d_type_tç±»å‹æŒ‡é’ˆ
 *                  -----
 *
 * Return         : AVM_ERR_NONE   successful.
 *                  Other         Other AVM_ERR_xxx   fail.
 *
-* Note(s)        : avm2d_typeÔÚÊ¹ÓÃÖ®Ç°±ØĞë³õÊ¼»¯
+* Note(s)        : avm2d_typeåœ¨ä½¿ç”¨ä¹‹å‰å¿…é¡»åˆå§‹åŒ–
 *******************************************************************************************/
 AVM_EXT AVM_ERR avmlib_2d_Init(avm2d_type_t *avm2d_type);
 
 /*******************************************************************************************
 * Function Name  : avmlib_2d_Child_Init.
 *
-* Description    : avm 2d ×ÓÄ£Ê½³õÊ¼»¯ avm2d_child_typeµÄavm2d_shader_typeºÍavm2d_texture_type
-*                  ´Óavm2d_base_typeÖĞ¸´ÖÆ£¬¶ÔÓÚ»·ÊÓºÍµ¥ÊÓÍ¼µÄavm2d_object_typeÊÇ
-*                  ´Óavm2d_base_typeÖĞ¸´ÖÆ,³µÄ£µÄavm2d_object_typeÊÇÖØĞÂ´´½¨¡£
-* Arguments      : avm2d_child_type  avm2d_type_tÀàĞÍÖ¸Õë
+* Description    : avm 2d å­æ¨¡å¼åˆå§‹åŒ– avm2d_child_typeçš„avm2d_shader_typeå’Œavm2d_texture_type
+*                  ä»avm2d_base_typeä¸­å¤åˆ¶ï¼Œå¯¹äºç¯è§†å’Œå•è§†å›¾çš„avm2d_object_typeæ˜¯
+*                  ä»avm2d_base_typeä¸­å¤åˆ¶,è½¦æ¨¡çš„avm2d_object_typeæ˜¯é‡æ–°åˆ›å»ºã€‚
+* Arguments      : avm2d_child_type  avm2d_type_tç±»å‹æŒ‡é’ˆ
 *                  -----
 *
-*                  avm2d_base_type   avm2d_type_tÀàĞÍÖ¸Õë
+*                  avm2d_base_type   avm2d_type_tç±»å‹æŒ‡é’ˆ
 *                  -----
 *
 * Return         : AVM_ERR_NONE   successful.
 *                  Other         Other AVM_ERR_xxx   fail.
 *
-* Note(s)        : avm2d_child_typeÔÚÊ¹ÓÃÖ®Ç°±ØĞë³õÊ¼»¯
+* Note(s)        : avm2d_child_typeåœ¨ä½¿ç”¨ä¹‹å‰å¿…é¡»åˆå§‹åŒ–
 *******************************************************************************************/
 AVM_EXT AVM_ERR avmlib_2d_Child_Init(avm2d_type_t *avm2d_child_type, avm2d_type_t *avm2d_base_type);
 
 /*******************************************************************************************
 * Function Name  : avmlib_2d_Exit.
 *
-* Description    : avm 2d ÍË³ö
+* Description    : avm 2d é€€å‡º
 *
-* Arguments      : avm2d_type avm2d_type_tÀàĞÍÖ¸Õë
+* Arguments      : avm2d_type avm2d_type_tç±»å‹æŒ‡é’ˆ
 *                  -----
 *
 * Return         : AVM_ERR_NONE   successful.
 *                  Other         Other AVM_ERR_xxx   fail.
 *
-* Note(s)        : ÔÚavmlib_Delete_Object¡¢avmlib_Delete_Textureµ÷ÓÃºóÔÙµ÷ÓÃ´Ëº¯Êı
+* Note(s)        : åœ¨avmlib_Delete_Objectã€avmlib_Delete_Textureè°ƒç”¨åå†è°ƒç”¨æ­¤å‡½æ•°
 *******************************************************************************************/
 AVM_EXT AVM_ERR avmlib_2d_Exit(avm2d_type_t *avm2d_type);
 
