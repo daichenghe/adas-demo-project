@@ -18,7 +18,22 @@ a demo project you can get more acquainted with adas (some sensitive function bo
 ### lut 标定数据
 ### media 贴图文件
 ### shaders 着色器程序
-**以上程序未完全开放，但可以一窥程序之框架**
+**以上程序未完全开放**
+
+# **模式名缩写**
+    MODE_AVM_3D	        3D环视 
+    MODE_AVM_2D 	      2D环视 
+    MODE_SV             单视野 
+    MODE_PER            潜望镜 
+    MODE_ORI            标定   
+    MODE_SVFS           前侧视 
+    MODE_SVBOTHS        双侧顶视 
+    MODE_SVBS           倒车镜 
+    MODE_SF             3D辅助视角 
+    MODE_BACKUP         倒车 
+    MODE_PER_CENTER     潜望镜中间 
+    MODE_AVM_LDWS 	    2D环视 
+    MODE_AVM_BSD  	    2D环视 
 
 # **功能**
 ### AVM 全景监控影像系统
