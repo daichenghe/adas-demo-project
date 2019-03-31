@@ -439,7 +439,6 @@ static AVM_ERR avm_common_mode_init_thread_create(void)
     {
         logg(ERR, "Create avm_common_mode_init_thread  error: %s, %d\n", __FUNCTION__, __LINE__);
         rec = AVM_ERR_FALSE;
-		
     }
 
 }
