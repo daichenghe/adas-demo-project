@@ -12,5 +12,5 @@
 6. 烧录开始  
 7. 烧录结束后断电，将拨码开关拨到app运行态，断电再上电即运行新的esp32程序  
 
-![未找到图片](https://github.com/Aceinna/openrtk/tree/embedded/esp32_upload/upload_esp32.png)
+![未找到图片](https://github.com/geqian/adas-demo-project/tree/master/esp32_upload/upload_esp32.png)
 
