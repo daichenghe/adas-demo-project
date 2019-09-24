@@ -24,8 +24,10 @@
 # windows 使用gcc make  
 
 1.下载gcc for windows   
->>>http://www.mingw-w64.org/doku.php>>>     
+>>>http://www.mingw-w64.org/doku.php   
+
 2.下载gcc-arm-none-eabi  
->>>https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads>>>     
+>>>https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads    
+ 
 3.添加环境变量，   
 **4.使用Git目录下bash.exe进行编译**     
