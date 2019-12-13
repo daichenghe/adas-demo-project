@@ -13,5 +13,5 @@ step_3. run.sh will auto run when powered on, it will start the data collect scr
 		First insert the USB of RTK, then insert other USB     
 step_4. the data file will be placed in a folder named by UTC day,and the data file will be named by the pi system time  
 
-![未找到图片](./data_path.png)  
+![未找到图片](media/data_path.png)  
 
