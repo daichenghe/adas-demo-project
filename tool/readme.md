@@ -5,8 +5,8 @@
 
 RTK data logging script  
 
-** step_1. Create a new folder named data_collect in the home directory of pi,and copy all the files in rtk_log_for_pi to data_collect **       
-** step_2. please refer to rc.local in rtk_log_for_pi to modify /etc/rc.local, add this code: **  
+**step_1. Create a new folder named data_collect in the home directory of pi,and copy all the files in rtk_log_for_pi to data_collect**       
+**step_2. please refer to rc.local in rtk_log_for_pi to modify /etc/rc.local, add this code:**  
 > cd /home/data_collect  
 > sudo ./run.sh &    
 step_3. run.sh will auto run when powered on, it will start the data collect script when USB port insertion is detected  
