@@ -10,7 +10,7 @@ RTK data logging script
 > cd /home/data_collect  
 > sudo ./run.sh &    
 
-step_3. run.sh will auto run when powered on, it will start the data collect script when USB port insertion is detected  
+step_3. run.sh will auto run when powered on, it will start the data collect script when USB port insertion is detected
         First insert the USB of RTK, then insert other USB     
 step_4. the data file will be placed in a folder named by UTC day,and the data file will be named by the pi system time  
 
