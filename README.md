@@ -49,4 +49,4 @@ a demo project you can get more acquainted with adas (some sensitive function bo
 ### 基于算法识别盲区物体并向车辆提出报警
 ### 通过usart与车辆通讯及交互切换画面并提供报警信息
 
-![未找到图片](https://github.com/geqian/adas_demo_project/blob/master/lut/screen.jpg)
+![未找到图片](./lut/screen.jpg)
